@@ -1,8 +1,14 @@
+body {
+  background: url(https://images5.alphacoders.com/755/755280.jpg);
+  background-size: cover;
+}
+
 .header {
   background-color: #007bff; /* Bootstrap blue color */
   color: #fff; /* White text color */
   padding: 20px; /* Padding around the text */
   text-align: center; /* Center align the text */
+  width: 100%;
 }
 .btn {
   color: black;
@@ -16,6 +22,7 @@
 
 .info-box {
   background-color: #f8f9fa; /* Light gray background */
+  margin: 5px;
   padding: 20px; /* Padding around the content */
   border-radius: 5px; /* Rounded corners */
 }
@@ -27,4 +34,14 @@
 .search-input {
     width: 300px; /* Set width of the search input */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow to the input */
+}
+
+.footer {
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Center align text */
+  padding: 20px 0; /* Add padding top and bottom */
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }

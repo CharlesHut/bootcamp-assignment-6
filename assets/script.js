@@ -59,11 +59,18 @@ $(document).ready(function() {
             $("#day4wind").text("wind: "+forecastList[31].wind.speed+" km/h")
             $("#day5wind").text("wind: "+forecastList[39].wind.speed+" km/h")
 
-            $("#date1").text("wind: "+forecastList[7].dt_txt)
-            $("#date2").text("wind: "+forecastList[15].dt_txt)
-            $("#date3").text("wind: "+forecastList[23].dt_txt)
-            $("#date4").text("wind: "+forecastList[31].dt_txt)
-            $("#date5").text("wind: "+forecastList[39].dt_txt)
+            $("#humidity1").text("humidity: "+forecastList[7].main.humidity+" %")
+            $("#humidity0").text("humidity: "+forecastList[0].main.humidity+" %")
+            $("#humidity2").text("humidity: "+forecastList[15].main.humidity+" %")
+            $("#humidity3").text("humidity: "+forecastList[23].main.humidity+" %")
+            $("#humidity4").text("humidity: "+forecastList[31].main.humidity+" %")
+            $("#humidity5").text("humidity: "+forecastList[39].main.humidity+" %")
+
+            $("#date1").text("date: "+forecastList[7].dt_txt)
+            $("#date2").text("date: "+forecastList[15].dt_txt)
+            $("#date3").text("date: "+forecastList[23].dt_txt)
+            $("#date4").text("date: "+forecastList[31].dt_txt)
+            $("#date5").text("date: "+forecastList[39].dt_txt)
 
             $(".cityName").text(cityName)
             const forecastEntry = `
