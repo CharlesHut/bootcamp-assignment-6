@@ -45,3 +45,12 @@ body {
   position: absolute;
   bottom: 0;
 }
+
+.history-item {
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+}

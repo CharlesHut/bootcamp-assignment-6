@@ -1,12 +1,42 @@
 $(document).ready(function() {
-    const apiKey = 'f9bbc6ac50ec9b9d88bc05c30a459ffe'; // Replace 'YOUR_API_KEY' with your actual API key
+    const apiKey = 'f9bbc6ac50ec9b9d88bc05c30a459ffe'; 
 
-    // Function to fetch 5-day weather forecast for a city
+    const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+
+    function saveSearchHistory(cityName) {
+        
+        searchHistory.unshift(cityName);
+        
+        if (searchHistory.length > 5) {
+            searchHistory.splice(5); 
+        }
+        localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+        displaySearchHistory();
+    }
+   
+    function displaySearchHistory() {
+        const historyContainer = $('#searchHistory');
+        historyContainer.empty();
+
+        searchHistory.forEach((city) => {
+            const historyItem = $('<li>').text(city).addClass('history-item');
+            historyContainer.append(historyItem);
+
+          
+            historyItem.click(() => {
+                fetchWeatherForecast(city);
+            });
+        });
+    }
+
+    displaySearchHistory();
+
+  
     function fetchWeatherForecast(cityName) {
-        // Construct the API request URL for forecast
+        
         const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=metric`;
 
-        // Fetch weather forecast data using fetch API
+      
         fetch(apiUrl)
             .then(response => {
                 if (!response.ok) {
@@ -16,7 +46,7 @@ $(document).ready(function() {
             })
             .then(data => {
                 console.log('Weather forecast data:', data);
-                // Process the weather forecast data
+                
                 const forecastList = data.list;
 
                 // Extract and display forecast details (e.g., for the next 5 days)
@@ -27,6 +57,16 @@ $(document).ready(function() {
                 alert('Failed to fetch weather forecast. Please try again.');
             });
     }
+
+    $('#button-addon2').click(function() {
+        const cityName = $('.search-input').val().trim();
+
+        if (cityName !== '') {
+            fetchWeatherForecast(cityName);
+        } else {
+            alert('Please enter a city name.');
+        }
+    });
 
     // Function to display 5-day forecast details in the modal
     function displayForecast(cityName, forecastList) {
